@@ -6,10 +6,16 @@ uvicorn[standard]==0.27.0
 python-multipart==0.0.6
 
 # ============================================================================
-# Deep Learning & ML (Python 3.11 Compatible)
+# Deep Learning & ML - CPU ONLY (CRITICAL FOR SIZE!)
 # ============================================================================
-torch==2.2.0
+# Use CPU-only PyTorch - saves ~2GB!
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.0+cpu
+
+# Sentence transformers (needed for inference)
 sentence-transformers==2.3.1
+
+# Transformers library
 transformers==4.37.2
 
 # ============================================================================
@@ -18,7 +24,7 @@ transformers==4.37.2
 networkx==3.2.1
 
 # ============================================================================
-# Google Gemini AI (Latest)
+# Google Gemini AI
 # ============================================================================
 google-generativeai==0.4.0
 
@@ -47,3 +53,8 @@ pydantic==2.6.0
 # Data Science & Arrays
 # ============================================================================
 numpy==1.26.3
+
+# ============================================================================
+# Additional (only if you use label encoder)
+# ============================================================================
+scikit-learn==1.4.0
