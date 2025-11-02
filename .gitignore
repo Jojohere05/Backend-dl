@@ -1,0 +1,34 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+temp/
+uploads/
+test_requirements.txt
+
+# Large model files (if not using Git LFS)
+# Uncomment if models are too large for Git:
+# models/*.pth
+# models/*.pkl

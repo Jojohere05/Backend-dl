@@ -1,0 +1,71 @@
+{
+  "compute": {
+    "EC2": {
+      "description": "Virtual servers",
+      "keywords": ["server", "virtual machine", "VM", "compute instance", "host application"]
+    },
+    "Lambda": {
+      "description": "Serverless functions",
+      "keywords": ["serverless", "function", "event-driven", "no server management"]
+    },
+    "ECS": {
+      "description": "Container orchestration",
+      "keywords": ["container", "docker", "microservices", "kubernetes"]
+    }
+  },
+  "storage": {
+    "S3": {
+      "description": "Object storage",
+      "keywords": ["file storage", "object storage", "static files", "media", "backup", "data lake"]
+    },
+    "EBS": {
+      "description": "Block storage for EC2",
+      "keywords": ["persistent storage", "block storage", "disk volume"]
+    }
+  },
+  "database": {
+    "RDS": {
+      "description": "Managed relational database",
+      "keywords": ["database", "SQL", "MySQL", "PostgreSQL", "relational", "user data"]
+    },
+    "DynamoDB": {
+      "description": "NoSQL database",
+      "keywords": ["NoSQL", "key-value", "document database", "fast queries"]
+    }
+  },
+  "networking": {
+    "VPC": {
+      "description": "Virtual private cloud",
+      "keywords": ["network", "private network", "isolated network"]
+    },
+    "CloudFront": {
+      "description": "CDN",
+      "keywords": ["CDN", "content delivery", "cache", "edge locations", "fast delivery"]
+    },
+    "API_Gateway": {
+      "description": "API management",
+      "keywords": ["API", "REST API", "HTTP API", "endpoint"]
+    }
+  },
+  "security": {
+    "IAM": {
+      "description": "Access management",
+      "keywords": ["authentication", "authorization", "permissions", "access control"]
+    },
+    "Cognito": {
+      "description": "User authentication",
+      "keywords": ["user login", "sign up", "user authentication", "user management"]
+    }
+  },
+  
+  "messaging": {
+    "SNS": {
+      "description": "Notification service",
+      "keywords": ["notifications", "push notifications", "pub-sub", "alerts"]
+    },
+    "SQS": {
+      "description": "Message queue",
+      "keywords": ["queue", "message queue", "async processing", "decouple"]
+    }
+  }
+}
