@@ -181,6 +181,16 @@ class CompletePipeline:
         for category, services in result['service_categories'].items():
             print(f"  {category.upper()}: {', '.join(services)}")
         
+        # ADD THIS NEW SECTION - Architecture Diagram Details
+        print(f"\n🏗️  Architecture Diagram (NetworkX Graph):")
+        graph = result['architecture_graph']
+        print(f"  Nodes ({len(graph['nodes'])} services):")
+        for node in graph['nodes']:
+            print(f"    • {node}")
+        print(f"\n  Edges ({len(graph['edges'])} connections):")
+        for edge in graph['edges']:
+            print(f"    {edge['from']} → {edge['to']} ({edge['type']})")
+        
         print(f"\n💰 Cost Optimization:")
         cost_opt = result['cost_optimization']
         print(f"  Status: {cost_opt['status']}")
@@ -197,13 +207,43 @@ class CompletePipeline:
                         if change.get('alternative'):
                             print(f"       → Replaced with: {', '.join(change['alternative'])}")
         
+        # ADD THIS NEW SECTION - Service Explanations
         if 'explainability' in result:
-            print(f"\n📝 Top Service Explanations:")
-            for svc in result['explainability']['service_explanations'][:3]:
-                print(f"\n  {svc['service']} ({svc['category']}) - Confidence: {svc['confidence']:.0%}")
-                print(f"  {svc['explanation'][:120]}...")
+            print(f"\n💡 Service Explanations (AI-Generated):")
+            print(f"  ╔{'═' * 76}╗")
+            for idx, svc in enumerate(result['explainability']['service_explanations'][:5], 1):
+                print(f"  ║ {idx}. {svc['service']} ({svc['category'].upper()}) - Confidence: {svc['confidence']:.0%}")
+                # Wrap explanation text to fit width
+                explanation = svc['explanation']
+                words = explanation.split()
+                line = "  ║    "
+                for word in words:
+                    if len(line) + len(word) + 1 > 78:
+                        print(line.ljust(78) + "║")
+                        line = "  ║    " + word
+                    else:
+                        line += " " + word if len(line) > 7 else word
+                print(line.ljust(78) + "║")
+                
+                if idx < len(result['explainability']['service_explanations'][:5]):
+                    print(f"  ║{' ' * 76}║")
+            print(f"  ╚{'═' * 76}╝")
+            
+            # Overall architecture rationale
+            print(f"\n  📝 Architecture Rationale:")
+            rationale = result['explainability']['architecture_rationale']
+            words = rationale.split()
+            line = "     "
+            for word in words:
+                if len(line) + len(word) + 1 > 78:
+                    print(line)
+                    line = "     " + word
+                else:
+                    line += " " + word if len(line) > 5 else word
+            print(line)
         
         print("\n" + "="*80)
+
 
 
 # Quick single test when run directly

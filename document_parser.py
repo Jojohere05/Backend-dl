@@ -69,8 +69,21 @@ class RequirementsDocumentParser:
     
     def _extract_from_txt(self, file_path):
         """Extract text from .txt file"""
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read()
+        # Try multiple encodings to handle Windows files
+        encodings = ['utf-8', 'utf-8-sig', 'latin-1', 'cp1252', 'iso-8859-1']
+        
+        for encoding in encodings:
+            try:
+                with open(file_path, 'r', encoding=encoding) as f:
+                    return f.read()
+            except UnicodeDecodeError:
+                continue
+        
+        # If all fail, read as binary and decode with error handling
+        with open(file_path, 'rb') as f:
+            content = f.read()
+            return content.decode('utf-8', errors='ignore')
+
     
     def _extract_from_pdf(self, file_path):
         """Extract text from PDF"""
